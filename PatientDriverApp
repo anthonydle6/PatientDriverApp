@@ -1,0 +1,76 @@
+package patient;
+
+/*
+ * Class: CMSC203 23488 
+ * Instructor: Huseyin Aygun
+ * Description: CMSC203 Assignment 2 Implementation Patient
+ * Due: 09/30/2024
+ * Platform/compiler: Eclipse IDE
+ * I pledge that I have completed the programming assignment independently. 
+ * I have not copied the code from a student or any source. I have not given my code to any student.
+ * Print your Name here: Anthony Le
+*/
+
+import java.util.Scanner;
+
+public class PatientDriverApp 
+{
+    public static void main(String[] args) 
+    {
+        // patient instance
+        Patient patient = new Patient("Bruce", "Thomas", "Wayne",
+                "1007 Mountain Drive", "Gotham", "NJ", "07030",
+                "212-228-6266", "Alfred Beagle", "173-518-5730");
+
+        // three instances of the Procedure class
+        Procedure procedure1 = new Procedure("Reconstructive Surgery", "07/06/2020", "Dr. Leslie Thompkins", 50000.0);
+        Procedure procedure2 = new Procedure("Therapeutic Procedure", "07/06/2020", "Dr. Harleen Quinzel", 30000.0);
+        Procedure procedure3 = new Procedure("Shoulder Surgery", "07/06/2020", "Dr. Hush", 20000.0);
+
+        // patient information
+        displayPatient(patient);
+
+        // information about all three procedures
+        displayProcedure(procedure1);
+        displayProcedure(procedure2);
+        displayProcedure(procedure3);
+
+        // total charges of the three procedures
+        double totalCharges = calculateTotalCharges(procedure1, procedure2, procedure3);
+        System.out.printf("Total charges: $%,.2f%n", totalCharges);
+        
+        // display student information
+        displayStudentInfo();
+    }
+
+    public static void displayPatient(Patient patient) 
+    {
+        System.out.println("Patient info:");
+        System.out.println("  Name: " + patient.buildFullName());
+        System.out.println("  Address: " + patient.buildAddress());
+        System.out.println("  EmergencyContact: " + patient.buildEmergencyContact());
+        System.out.println();
+    }
+
+    public static void displayProcedure(Procedure procedure) 
+    {
+        System.out.println("    	Procedure: " + procedure.getName());
+        System.out.println("    	ProcedureDate=" + procedure.getDate());
+        System.out.println("    	Practitioner=" + procedure.getPractitioner());
+        System.out.println("    	Charges=" + procedure.getCharges());
+        System.out.println();
+    }
+
+    public static double calculateTotalCharges(Procedure procedure1, Procedure procedure2, Procedure procedure3) 
+    {
+        return procedure1.getCharges() + procedure2.getCharges() + procedure3.getCharges();
+    }
+
+    public static void displayStudentInfo() 
+    {
+        System.out.println("\nStudent Name: Anthony Le");
+        System.out.println("MC#: M21173083");
+        System.out.println("Due Date: 9/30/2024");
+        System.out.println("\n\nThe program was developed by a Student: Anthony Le 9/30/2024");
+    }
+}
